@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+</head>
+<body>
+    <div ng-app="app" ng-controller="sam">
+        <h2>Date in different formats</h2>
+        <div>
+            <h4>Default Date : {{curDate}}</h4>
+            <h4>Short Date : {{curDate | date:'short'}}</h4>
+            <h4>Medium Date : {{curDate | date:'medium'}}</h4>
+            <h4>Full Date : {{curDate | date:'fullDate'}}</h4>
+        </div>
+    </div>
+    <script>
+        var app = angular.module('app', [])
+        app.controller('sam', function($scope){
+            $scope.curDate = new Date();
+        })
+    </script>
+</body>
+</html>

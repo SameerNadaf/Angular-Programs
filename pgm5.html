@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCntl">
+        <div>
+            <label for="num">Enter number of students to display :</label>
+            <input type="number" name="num" id="num" ng-model="num" placeholder="eg : 4">
+        </div>
+        <div>
+            <table border="1px solid black">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Name</th>
+                    <th>CGPA</th>
+                </tr>
+                <tr ng-repeat="student in students | limitTo : num track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.cgpa}}</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h4>Total number of students : {{students.length}}</h4>
+            <h4>No of students fetched   : {{num}}</h4>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', [])
+        app.controller('myCntl', function($scope){
+            $scope.students = [
+                {name:'sam', cgpa:'9'},
+                {name:'sam', cgpa:'9'},
+                {name:'sam', cgpa:'9'},
+                {name:'sam', cgpa:'9'},
+                {name:'sam', cgpa:'9'},
+                {name:'sam', cgpa:'9'},
+                {name:'sam', cgpa:'9'},
+                {name:'sam', cgpa:'9'},
+                {name:'sam', cgpa:'9'},
+                {name:'sam', cgpa:'9'}
+            ]
+
+            $scope.num=0;
+        })
+    </script>
+</body>
+</html>

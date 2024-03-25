@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <style>
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div ng-app="my" ng-controller="ctrl"> 
+        <form>
+            <label for="">Enter your first name:</label><br>
+            <input type="text" name="" id="" ng-model="fn"><br>
+            <label for="">enter your last name:</label><br>
+            <input type="text" name="" id="" ng-model="ln"><br>
+        </form>
+        <p>your full name is {{fn +" "+ln}}</p>
+    </div>
+    <script>
+        var app= angular.module('my',[])
+        app.controller("ctrl",function($scope){
+            $scope.fn="sameer"
+            $scope.ln="nadaf"
+        })
+    </script>
+</body>
+</html>

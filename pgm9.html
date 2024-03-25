@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+</head>
+<body>
+    <div ng-app="app" ng-controller="sam">
+
+        <h2>Employee Searching</h2>
+
+        <div>
+            <div>
+                <label for="name">Search by name :</label>
+                <input type="text" name="name" id="name" ng-model="fname">
+            </div>
+            <div>
+                <label for="sal">Search by salary :</label>
+                <input type="number" name="sal" id="sal" ng-model="sal">
+            </div>
+            <div>
+                <button ng-click="clear()">CLEAR</button>
+            </div>
+        </div>
+
+        <div>
+            <table>
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Name</th>
+                    <th>Salary</th>
+                </tr>
+                <tr ng-repeat="emp in employee | filter:{name:fname, salary:sal}">
+                    <td>{{$index+1}}</td>
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.salary}}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        var app = angular.module('app', [])
+        app.controller('sam', function($scope){
+            $scope.employee = [
+                {name:'sam', salary:50000},
+                {name:'same', salary:60000},
+                {name:'samee', salary:70000},
+                {name:'sa', salary:40000},
+                {name:'sidd', salary:30000},
+                {name:'wizz', salary:20000},
+            ]
+
+            $scope.clear = function(){
+                $scope.fname='';
+                $scope.sal='';
+            }
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCntl">
+
+        <h2>To Do List</h2>
+
+        <div>
+            <label for="add">Enter a task to add :</label>
+            <input type="text" name="add" id="add" ng-model="new" placeholder="eg: Gym">
+            <button ng-click="add()">Add</button>
+        </div>
+        <div>
+            <table border="1px solid black">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Task</th>
+                    <th>Action</th>
+                </tr>
+                <tr ng-repeat="task in tasks">
+                    <td>{{$index}}</td>
+                    <td>{{task}}</td>
+                    <td>
+                        <button ng-click="edit($index)">Edit</button>
+                        <button ng-click="delete($index)">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', [])
+        app.controller('myCntl', function($scope){
+            $scope.tasks = [
+                'Game', 'Shopping', 'Trip', 'Visit'
+            ]
+
+            $scope.add = function(){
+                $scope.tasks.push($scope.new);
+            }
+
+            $scope.edit = function(ind){
+                var newTask = prompt('Enter new task');
+                if(newTask!=0){
+                    $scope.tasks[ind] = newTask;
+                }
+            }
+
+            $scope.delete = function(ind){
+                $scope.tasks.splice(ind,1);
+            }
+        })
+    </script>
+</body>
+</html>

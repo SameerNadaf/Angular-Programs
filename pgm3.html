@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCntl">
+
+        <form>
+            <fieldset>
+
+                <div>
+                    <label for="fir">Enter the first number: </label>
+                    <input type="number" id="fir" ng-model="firn">
+                </div>
+
+                <div>
+                    <label for="las">Enter the first number: </label>
+                    <input type="number" id="las" ng-model="lasn">
+                </div>
+
+                <div>
+                    <button ng-click="add()">Add</button>
+                    <button ng-click="sub()">Sub</button>
+                    <button ng-click="mul()">Mul</button>
+                    <button ng-click="div()">Div</button>
+                </div>
+
+                <div>
+                    <h4>Result : {{result}}</h4>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+
+    <script>
+        var app = angular.module('myApp',[])
+        app.controller('myCntl', function($scope){
+            $scope.firn=0;
+            $scope.lasn=0;
+
+            $scope.add = function(){
+                $scope.result = $scope.firn + $scope.lasn;
+            }
+
+            $scope.sub = function(){
+                $scope.result = $scope.firn - $scope.lasn;
+            }
+
+            $scope.mul = function(){
+                $scope.result = $scope.firn * $scope.lasn;
+            }
+
+            $scope.div = function(){
+                if($scope.lasn==0){
+                    alert('Cannot divide by zero');
+                }
+                else{
+                    $scope.result = $scope.firn / $scope.lasn;
+                }
+            }
+
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCntl">
+        <div>
+            <label for="num">Enter a number :</label>
+            <input type="number" name="num" id="num" ng-model="num">
+        </div>
+        <div>
+            <button ng-click="fact()">Factorial</button>
+            <button ng-click="sqr()">Square</button>
+        </div>
+        <div>
+            <h4>Result: {{result}}</h4>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', [])
+        app.controller('myCntl', function($scope){
+            $scope.num=0;
+
+            $scope.fact = function(){
+                $scope.result = fac($scope.num);
+            }
+
+            function fac(num){
+                if(num==0 || num==1){
+                    return 1;
+                }
+                else{
+                    return num * fac(num-1);
+                }
+            }
+
+            $scope.sqr = function(){
+                $scope.result = $scope.num * $scope.num ;
+            }
+        })
+    </script>
+</body>
+</html>

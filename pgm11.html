@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+</head>
+<body>
+    <div ng-app="app" ng-controller="sam">
+
+        <div>
+            <h2>Student Details</h2>
+            <table>
+                <tr ng-repeat="stud in students">
+                    <td>{{stud}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <h2>Student Details in UpperCase</h2>
+            <table>
+                <tr ng-repeat="stud in students">
+                    <td>{{stud | uppercase}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <h2>Student Details in LowerCase</h2>
+            <table>
+                <tr ng-repeat="stud in students">
+                    <td>{{stud | lowercase}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module('app', [])
+        app.controller('sam', function($scope){
+            $scope.students = [
+                'Name : Sameer Nadaf, USN : 2BU21CS119, Dept : CSE',
+                'Name : Aftab Afgani, USN : 2BU21CS117, Dept : CSE'
+            ]
+        })
+    </script>
+</body>
+</html>
