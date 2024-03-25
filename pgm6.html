@@ -22,11 +22,13 @@
                 <tr>
                     <th>Sl.No</th>
                     <th>Task</th>
+                    <th>Completed</th>
                     <th>Action</th>
                 </tr>
                 <tr ng-repeat="task in tasks">
-                    <td>{{$index}}</td>
-                    <td>{{task}}</td>
+                    <td>{{$index+1}}</td>
+                    <td>{{task.Title}}</td>
+                    <td><input type="checkbox" ng-model="task.Completed"></td>
                     <td>
                         <button ng-click="edit($index)">Edit</button>
                         <button ng-click="delete($index)">Delete</button>
@@ -40,7 +42,10 @@
         var app = angular.module('myApp', [])
         app.controller('myCntl', function($scope){
             $scope.tasks = [
-                'Game', 'Shopping', 'Trip', 'Visit'
+                {Title:'Game', Completed:true},
+                {Title:'Gym', Completed:false},
+                {Title:'Shopping', Completed:false},
+                {Title:'Trip', Completed:false}
             ]
 
             $scope.add = function(){

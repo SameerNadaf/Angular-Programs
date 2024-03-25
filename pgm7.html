@@ -73,7 +73,9 @@
             ]
 
             $scope.add = function () {
-                var newUser = {
+                if($scope.uname!=null && $scope.mail!=null)
+                {
+                    var newUser = {
                     name: $scope.uname,
                     email: $scope.mail,
                     editing: false
@@ -82,6 +84,10 @@
                 $scope.users.push(newUser);
                 $scope.uname = '';
                 $scope.mail = '';
+                }
+                else{
+                    alert('Add user details')
+                }
             }
 
             $scope.read = function (user) {
